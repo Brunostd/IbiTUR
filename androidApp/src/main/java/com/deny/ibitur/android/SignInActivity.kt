@@ -82,7 +82,7 @@ class SignInActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("SignInActivity", "signInWithCredential:success")
-                    val intent2 = Intent(this, DashBoardActivity::class.java)
+                    val intent2 = Intent(this, ConteudoActivity::class.java)
                     startActivity(intent2)
                     finish()
                 } else {

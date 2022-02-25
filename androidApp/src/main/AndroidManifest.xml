@@ -9,6 +9,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ConteudoActivity"
+            android:exported="false"
+            android:label="@string/title_activity_conteudo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".SignInActivity"
             android:exported="false" />
         <activity
