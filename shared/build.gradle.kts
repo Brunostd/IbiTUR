@@ -49,6 +49,16 @@ kotlin {
             iosArm64Test.dependsOn(this)
             iosSimulatorArm64Test.dependsOn(this)
         }
+
+        androidMain.dependencies {
+            implementation("com.google.firebase:firebase-bom:29.1.0")
+            implementation("com.google.firebase:firebase-analytics-ktx:20.0.2")
+            implementation("com.google.firebase:firebase-auth-ktx:21.0.1")
+            implementation("com.google.gms:google-services:4.3.10")
+            implementation("com.google.android.gms:play-services-auth:20.1.0")
+            implementation("com.firebaseui:firebase-ui-auth:7.2.0")
+            implementation("com.google.firebase:firebase-auth:21.0.1")
+        }
     }
 }
 
@@ -59,4 +69,7 @@ android {
         minSdk = 21
         targetSdk = 31
     }
+}
+dependencies {
+    implementation("com.google.android.gms:play-services-base:18.0.1")
 }

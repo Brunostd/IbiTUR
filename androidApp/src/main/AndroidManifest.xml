@@ -4,11 +4,16 @@
 
     <application
         android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
         android:label="IbiTUR"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:icon="@mipmap/ic_launcher"
-        >
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoardActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
