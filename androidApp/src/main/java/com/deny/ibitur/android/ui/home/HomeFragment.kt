@@ -4,22 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.adapter.CarroselAdapter
 import com.deny.ibitur.android.databinding.FragmentHomeBinding
 import com.deny.ibitur.android.model.CarroselModel
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
     private var listaCarrosel: MutableList<CarroselModel> = arrayListOf()
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -49,6 +53,11 @@ class HomeFragment : Fragment() {
         binding.recyclerViewCarrosel.adapter = CarroselAdapter(listaCarrosel)
 
         return root
+    }
+
+    override fun onPause() {
+        super.onPause()
+        listaCarrosel.clear()
     }
 
     fun addCarrosel(){
