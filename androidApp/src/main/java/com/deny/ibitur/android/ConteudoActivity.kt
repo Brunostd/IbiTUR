@@ -1,12 +1,14 @@
 package com.deny.ibitur.android
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.media.Image
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -82,4 +84,5 @@ class ConteudoActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_conteudo)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
 }
