@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(){
 
         Handler().postDelayed({
             if (user != null){
-                val dashBoardActivity = Intent(this, DashBoardActivity::class.java)
+                val dashBoardActivity = Intent(this, ConteudoActivity::class.java)
                 startActivity(dashBoardActivity)
                 finish()
             } else{

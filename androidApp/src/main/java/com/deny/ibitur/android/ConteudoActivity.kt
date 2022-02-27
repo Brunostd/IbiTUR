@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.media.Image
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.SearchView
@@ -78,6 +79,16 @@ class ConteudoActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.conteudo, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_sair){
+            mAuth.signOut()
+            startActivity(Intent(this, SignInActivity::class.java))
+            finish()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ListAdapter
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -16,8 +17,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
+import com.deny.ibitur.android.adapter.AtividadesAdapter
 import com.deny.ibitur.android.adapter.CarroselAdapter
 import com.deny.ibitur.android.databinding.FragmentHomeBinding
+import com.deny.ibitur.android.model.AtividadesModel
 import com.deny.ibitur.android.model.CarroselModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -28,6 +31,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: FragmentHomeBinding? = null
     private var db = Firebase.firestore
     private var listaCarrosel: MutableList<CarroselModel> = arrayListOf()
+    private var listaAtividades: MutableList<AtividadesModel> = arrayListOf()
 
 
     // This property is only valid between onCreateView and
@@ -50,14 +54,33 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             textView.text = it
         }*/
 
-            lugaresProximos()
+        var linearLayoutManager: LinearLayoutManager = LinearLayoutManager(requireContext())
+        linearLayoutManager.orientation = RecyclerView.HORIZONTAL
+        binding.recyclerViewCarrosel.layoutManager = linearLayoutManager
+        binding.recyclerViewCarrosel.adapter = CarroselAdapter(listaCarrosel)
+
+        var linearLayoutManager2: LinearLayoutManager = LinearLayoutManager(requireContext())
+        linearLayoutManager2.orientation = RecyclerView.HORIZONTAL
+        binding.recyclerAtividades.layoutManager = linearLayoutManager2
+        binding.recyclerAtividades.adapter = AtividadesAdapter(listaAtividades)
+
+
+        binding.searchViewHome?.isSubmitButtonEnabled = true
+        binding.searchViewHome?.setOnQueryTextListener(this)
 
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        lugaresProximos()
+        atividades()
     }
 
     override fun onPause() {
         super.onPause()
         listaCarrosel.clear()
+        listaAtividades.clear()
     }
 
     /*fun addCarrosel(){
@@ -78,15 +101,39 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                         nomeLocalidade = note!!.nomeLocalidade
                     )
                     this.listaCarrosel.add(p)
-                    var linearLayoutManager: LinearLayoutManager = LinearLayoutManager(requireContext())
-                    linearLayoutManager.orientation = RecyclerView.HORIZONTAL
-                    binding.recyclerViewCarrosel.layoutManager = linearLayoutManager
-                    binding.recyclerViewCarrosel.adapter = CarroselAdapter(listaCarrosel)
                 }
+                binding.recyclerViewCarrosel.adapter?.notifyDataSetChanged()
             }
+    }
 
-        binding.searchViewHome?.isSubmitButtonEnabled = true
-        binding.searchViewHome?.setOnQueryTextListener(this)
+    fun atividades(){
+
+        /*var p: AtividadesModel = AtividadesModel(R.drawable.image_phistorico, "P.Historicos")
+        listaAtividades.add(p)
+
+        db.collection("atividades")
+            .add(listaAtividades[0])
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }*/
+
+        db.collection("atividades")
+            .get()
+            .addOnSuccessListener { result ->
+                for (documents in result){
+                    var note = documents.toObject(AtividadesModel::class.java)
+
+                    var n: AtividadesModel = AtividadesModel(
+                        imageAtividade = note!!.imageAtividade,
+                        tituloAtividade = note!!.tituloAtividade
+                    )
+                    this.listaAtividades.add(n)
+                }
+                binding.recyclerAtividades.adapter?.notifyDataSetChanged()
+            }
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -122,10 +169,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                     )
                     this.listaCarrosel.add(p)
                 }
-                var linearLayoutManager: LinearLayoutManager = LinearLayoutManager(requireContext())
-                linearLayoutManager.orientation = RecyclerView.HORIZONTAL
-                binding.recyclerViewCarrosel.layoutManager = linearLayoutManager
-                binding.recyclerViewCarrosel.adapter = CarroselAdapter(listaCarrosel)
+                binding.recyclerViewCarrosel.adapter?.notifyDataSetChanged()
             }
     }
 
