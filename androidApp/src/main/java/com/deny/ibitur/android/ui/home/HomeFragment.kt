@@ -49,7 +49,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }*/
-        
+
             lugaresProximos()
 
         return root
