@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "653272915209",
-    "project_id": "logincom-83d0d",
-    "storage_bucket": "logincom-83d0d.appspot.com"
+    "project_number": "192790175413",
+    "project_id": "ibitur-f5194",
+    "storage_bucket": "ibitur-f5194.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:653272915209:android:d22a46411704093103c7d8",
+        "mobilesdk_app_id": "1:192790175413:android:5bc267d8670b83365828fc",
         "android_client_info": {
-          "package_name": "com.deny.logincomgoogle.android"
+          "package_name": "com.deny.ibitur.android"
         }
       },
       "oauth_client": [
         {
-          "client_id": "653272915209-7dvpjg7sl72u4rhod1e0ar37frfa19bv.apps.googleusercontent.com",
+          "client_id": "192790175413-beq03bhdo43uq0hdf1l3rk0beuhq1h51.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.deny.logincomgoogle.android",
+            "package_name": "com.deny.ibitur.android",
             "certificate_hash": "a93dd328be732a6c02efac788adfe483be28d553"
           }
         },
         {
-          "client_id": "653272915209-oigt3t7um1hgk9f0cu9ekq4t45dddk6v.apps.googleusercontent.com",
+          "client_id": "192790175413-q33a7m362gqgt25l2oq0uo9ovqlt4u0u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCZHcdRMz_nh_X8KU2iYNbapDnWL_gaZyk"
+          "current_key": "AIzaSyBWeF1QXssgQkchJ5wWCUq0q2-Y29Jd6SM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "653272915209-oigt3t7um1hgk9f0cu9ekq4t45dddk6v.apps.googleusercontent.com",
+              "client_id": "192790175413-q33a7m362gqgt25l2oq0uo9ovqlt4u0u.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

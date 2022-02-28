@@ -1,6 +1,7 @@
 plugins {
     id("com.google.gms.google-services")
     id("com.android.application")
+    id("androidx.navigation.safeargs")
     kotlin("android")
     apply{"com.android.application"}
     apply{"com.google.gms.google-services"}
@@ -48,7 +49,6 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.4.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.13.0")
-
 
     // Required only if Facebook login support is required
     // Find the latest Facebook SDK releases here: https://goo.gl/Ce5L94

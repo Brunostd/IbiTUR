@@ -9,7 +9,11 @@
         android:id="@+id/nav_home"
         android:name="com.deny.ibitur.android.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_locaisSelecionadosFragment"
+            app:destination="@id/locaisSelecionadosFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -22,4 +26,13 @@
         android:name="com.deny.ibitur.android.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/locaisSelecionadosFragment"
+        android:name="com.deny.ibitur.android.ui.locais.LocaisSelecionadosFragment"
+        android:label="Lugar selecionado"
+        tools:layout="@layout/locais_selecionados_fragment" >
+        <argument
+            android:name="recebeLocal"
+            app:argType="string" />
+    </fragment>
 </navigation>

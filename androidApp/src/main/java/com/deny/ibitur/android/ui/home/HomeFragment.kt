@@ -98,6 +98,17 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     }*/
 
     fun lugaresProximos(){
+        /*var p: CarroselModel = CarroselModel(R.drawable.santuario_fatima, "Santuario de fatima", "São Benedito")
+        listaCarrosel.add(p)
+
+        db.collection("lugares")
+            .add(listaCarrosel[0])
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }*/
         db.collection("lugares")
             .get()
             .addOnSuccessListener { result ->
@@ -117,7 +128,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
     fun atividades(){
 
-        /*var p: AtividadesModel = AtividadesModel(R.drawable.image_phistorico, "P.Historicos")
+        /*var p: AtividadesModel = AtividadesModel(R.drawable.image_outros, "Outros")
         listaAtividades.add(p)
 
         db.collection("atividades")
@@ -146,7 +157,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     fun recomendados(){
-        /*var p: RecomendadosModel = RecomendadosModel(R.drawable.carnaubal, "Carnaubal")
+        /*var p: RecomendadosModel = RecomendadosModel(R.drawable.ibiapina, "Ibiapina")
         listaRecomendados.add(p)
 
 
@@ -195,7 +206,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         listaCarrosel.clear()
 
         db.collection("lugares")
-            .whereEqualTo("nomeLocalidade", searchQuery)
+            .whereEqualTo("nomeLugar", searchQuery)
             .get()
             .addOnSuccessListener { result ->
                 for (documents in result){

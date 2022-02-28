@@ -6,9 +6,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.CarroselModel
+import com.deny.ibitur.android.ui.home.HomeFragment
+import com.deny.ibitur.android.ui.home.HomeFragmentDirections
 
 class CarroselAdapter(var listaCarrosel: MutableList<CarroselModel>): RecyclerView.Adapter<CarroselAdapter.MyViewHolder>() {
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -23,6 +26,10 @@ class CarroselAdapter(var listaCarrosel: MutableList<CarroselModel>): RecyclerVi
             textLugaresCarrosel.text = carroselModel.nomeLugar
             textLocalidadeCarrosel.text = carroselModel.nomeLocalidade
 
+            cardCarrosel.setOnClickListener(View.OnClickListener {
+                val action = HomeFragmentDirections.actionNavHomeToLocaisSelecionadosFragment(textLugaresCarrosel.text.toString())
+                itemView.findNavController().navigate(action)
+            })
         }
     }
 

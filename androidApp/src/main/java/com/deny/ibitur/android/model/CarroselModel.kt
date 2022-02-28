@@ -5,4 +5,6 @@ class CarroselModel(
     var nomeLugar: String = "",
     var nomeLocalidade: String = ""
 ) {
+    var descricaoLugar: String = ""
+    var entradaLocal: String = ""
 }
