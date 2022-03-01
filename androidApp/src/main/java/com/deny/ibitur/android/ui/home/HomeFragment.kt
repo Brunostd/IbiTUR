@@ -98,7 +98,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     }*/
 
     fun lugaresProximos(){
-        /*var p: CarroselModel = CarroselModel(R.drawable.santuario_fatima, "Santuario de fatima", "São Benedito")
+        /*var p: CarroselModel = CarroselModel(R.drawable.mirante_bosco, "Mirante do bosoc", "Tiangua")
         listaCarrosel.add(p)
 
         db.collection("lugares")
@@ -116,7 +116,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                     var note = documents.toObject(CarroselModel::class.java)
 
                     var p: CarroselModel = CarroselModel(
-                        imageLugar = note!!.imageLugar,
+                        //imageLugar = note!!.imageLugar,
                         nomeLugar  = note!!.nomeLugar,
                         nomeLocalidade = note!!.nomeLocalidade
                     )
@@ -128,7 +128,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
     fun atividades(){
 
-        /*var p: AtividadesModel = AtividadesModel(R.drawable.image_outros, "Outros")
+        /*var p: AtividadesModel = AtividadesModel(R.drawable.ic_baseline_landscape_24, "Eco-Turismo")
         listaAtividades.add(p)
 
         db.collection("atividades")
@@ -147,7 +147,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                     var note = documents.toObject(AtividadesModel::class.java)
 
                     var n: AtividadesModel = AtividadesModel(
-                        imageAtividade = note!!.imageAtividade,
+                        //imageAtividade = note!!.imageAtividade,
                         tituloAtividade = note!!.tituloAtividade
                     )
                     this.listaAtividades.add(n)
@@ -157,7 +157,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     fun recomendados(){
-        /*var p: RecomendadosModel = RecomendadosModel(R.drawable.ibiapina, "Ibiapina")
+        /*var p: RecomendadosModel = RecomendadosModel(R.drawable.ubajara, "Ubajara")
         listaRecomendados.add(p)
 
 
@@ -177,7 +177,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                     var note = documents.toObject(RecomendadosModel::class.java)
 
                     var n: RecomendadosModel = RecomendadosModel(
-                        imageCidade = note!!.imageCidade,
+                        //imageCidade = note!!.imageCidade,
                         nomeCidade = note!!.nomeCidade
                     )
                     this.listaRecomendados.add(n)
@@ -213,7 +213,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                     var note = documents.toObject(CarroselModel::class.java)
 
                     var p: CarroselModel = CarroselModel(
-                        imageLugar = note!!.imageLugar,
+                        //imageLugar = note!!.imageLugar,
                         nomeLugar  = note!!.nomeLugar,
                         nomeLocalidade = note!!.nomeLocalidade
                     )

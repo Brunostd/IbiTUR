@@ -6,17 +6,29 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.RecomendadosModel
+import com.google.firebase.storage.FirebaseStorage
 
 class RecomendadosAdapter(var listaRecomendados: MutableList<RecomendadosModel>): RecyclerView.Adapter<RecomendadosAdapter.MyViewHolder>() {
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+
+        private var storage : FirebaseStorage = FirebaseStorage.getInstance()
+
         fun bind(recomendadosModel: RecomendadosModel){
+
+            var storageRef = storage.reference
 
             var imageCidade: ImageView = itemView.findViewById(R.id.imageCidade)
             var nomeCidade: TextView = itemView.findViewById(R.id.nomeCidade)
 
-            imageCidade.setImageResource(recomendadosModel.imageCidade)
+            var spaceRef = storageRef.child("recomendados/"+recomendadosModel.nomeCidade+".jpg")
+
+            spaceRef.downloadUrl.addOnSuccessListener {
+                Glide.with(itemView.context).load(it).into(imageCidade)
+            }
+            //imageCidade.setImageResource(recomendadosModel.imageCidade)
             nomeCidade.text = recomendadosModel.nomeCidade
         }
     }

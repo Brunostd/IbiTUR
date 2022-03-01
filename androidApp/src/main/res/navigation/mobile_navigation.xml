@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_home_to_locaisSelecionadosFragment"
             app:destination="@id/locaisSelecionadosFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_restaurantesFragment"
+            app:destination="@id/restaurantesFragment" />
     </fragment>
 
     <fragment
@@ -33,6 +36,15 @@
         tools:layout="@layout/locais_selecionados_fragment" >
         <argument
             android:name="recebeLocal"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurantesFragment"
+        android:name="com.deny.ibitur.android.ui.restaurantes.RestaurantesFragment"
+        android:label="restaurantes_fragment"
+        tools:layout="@layout/restaurantes_fragment" >
+        <argument
+            android:name="recebeAtividade"
             app:argType="string" />
     </fragment>
 </navigation>

@@ -1,5 +1,6 @@
 package com.deny.ibitur.android.adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,21 +9,36 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.CarroselModel
 import com.deny.ibitur.android.ui.home.HomeFragment
 import com.deny.ibitur.android.ui.home.HomeFragmentDirections
+import com.google.android.gms.tasks.Task
+import com.google.firebase.storage.FirebaseStorage
+//import com.google.firebase.storage.FirebaseStorage
+import java.net.URL
 
 class CarroselAdapter(var listaCarrosel: MutableList<CarroselModel>): RecyclerView.Adapter<CarroselAdapter.MyViewHolder>() {
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+
+        var storage: FirebaseStorage = FirebaseStorage.getInstance()
+
         fun bind(carroselModel: CarroselModel){
+            var storageRef = storage.reference
 
             var cardCarrosel: CardView = itemView.findViewById(R.id.cardCarrosel)
             var imageCarrosel: ImageView = itemView.findViewById(R.id.imageViewCarrosel)
             var textLugaresCarrosel: TextView = itemView.findViewById(R.id.textLugaresCarrosel)
             var textLocalidadeCarrosel: TextView = itemView.findViewById(R.id.textLocalidadeCarrosel)
 
-            imageCarrosel.setImageResource(carroselModel.imageLugar)
+            var spaceRef = storageRef.child("lugares/"+carroselModel.nomeLugar+".jpg")
+
+            spaceRef.downloadUrl.addOnSuccessListener {
+                Glide.with(itemView.context).load(it).into(imageCarrosel)
+            }
+
+            //imageCarrosel.setImageResource(carroselModel.imageLugar)
             textLugaresCarrosel.text = carroselModel.nomeLugar
             textLocalidadeCarrosel.text = carroselModel.nomeLocalidade
 
