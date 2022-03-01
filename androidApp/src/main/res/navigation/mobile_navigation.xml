@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/restaurantesFragment"
         android:name="com.deny.ibitur.android.ui.restaurantes.RestaurantesFragment"
-        android:label="restaurantes_fragment"
+        android:label="Atividade selecionada"
         tools:layout="@layout/restaurantes_fragment" >
         <argument
             android:name="recebeAtividade"

@@ -5,4 +5,6 @@ class EstabelecimentosModel(
     var nomeEstabelecimento: String = "",
     var cidadeEstabelecimento: String = ""
 ) {
+    var tipoEstabelecimento: String = ""
+    var descricaoTipoEstabelecimento: String = ""
 }

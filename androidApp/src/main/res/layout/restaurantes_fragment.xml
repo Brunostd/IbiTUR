@@ -7,7 +7,7 @@
     tools:context=".ui.restaurantes.RestaurantesFragment" >
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/iconeAtividades"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="18dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/tipoEstabelecimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -26,38 +26,40 @@
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@+id/iconeAtividades"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/descricaoTipoEstabelecimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:text="Restaurantes e Foods"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintStart_toEndOf="@+id/iconeAtividades"
+        app:layout_constraintTop_toBottomOf="@+id/tipoEstabelecimento" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="18dp"
+        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
         android:gravity="center"
         android:text="Recomendações"
-        android:textColor="#000000"
+        android:textColor="#3F51B5"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerEstabelecimentos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/iconeAtividades" />
 
     <TextView
         android:id="@+id/textView19"
@@ -70,7 +72,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerEstabelecimentos" />
 
     <TextView
         android:id="@+id/textView20"
@@ -85,14 +87,16 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="18dp"
+        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
         android:gravity="center"
         android:text="Ver outros"
-        android:textColor="#000000"
+        android:textColor="#3F51B5"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerEstabelecimentos" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="409dp"
