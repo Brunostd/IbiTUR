@@ -6,23 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.restaurantes.RestaurantesFragment" >
 
-    <ImageView
-        android:id="@+id/iconeAtividades"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/image_restaurantes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tipoEstabelecimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:text="Restaurantes"
+        android:text="Outros"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -34,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="Restaurantes e Foods"
+        android:text="Veja outros"
         app:layout_constraintStart_toEndOf="@+id/iconeAtividades"
         app:layout_constraintTop_toBottomOf="@+id/tipoEstabelecimento" />
 
@@ -99,9 +89,21 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerEstabelecimentos" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleExploreOutros"
         android:layout_width="409dp"
-        android:layout_height="419dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+    <ImageView
+        android:id="@+id/iconeAtividades"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/outros"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

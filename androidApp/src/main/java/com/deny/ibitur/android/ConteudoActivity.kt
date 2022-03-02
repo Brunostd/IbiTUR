@@ -22,6 +22,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.convertTo
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.deny.ibitur.android.databinding.ActivityConteudoBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -64,7 +65,7 @@ class ConteudoActivity : AppCompatActivity() {
 
         nomeUsuario.text = currentUser?.displayName
         emailUsuario.text = currentUser?.email
-        Glide.with(this).load(currentUser?.photoUrl).into(imageUsuario)
+        Glide.with(this).load(currentUser?.photoUrl).transform(CircleCrop()).into(imageUsuario)
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

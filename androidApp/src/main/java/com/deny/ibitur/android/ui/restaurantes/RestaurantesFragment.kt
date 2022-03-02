@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.deny.ibitur.android.adapter.EstabelecimentosAdapter
+import com.deny.ibitur.android.adapter.ExploreLocaisAdapter
 import com.deny.ibitur.android.databinding.RestaurantesFragmentBinding
 import com.deny.ibitur.android.model.EstabelecimentosModel
 import com.google.firebase.firestore.ktx.firestore
@@ -21,6 +22,7 @@ class RestaurantesFragment : Fragment() {
     private var _binding: RestaurantesFragmentBinding? = null
     private val args: RestaurantesFragmentArgs by navArgs()
     private var listaEstabelecimentos: MutableList<EstabelecimentosModel> = arrayListOf()
+    private var listaExploreOutros: MutableList<EstabelecimentosModel> = arrayListOf()
     private var db = Firebase.firestore
     private var storage: FirebaseStorage = FirebaseStorage.getInstance()
     var storageRef = storage.reference
@@ -43,6 +45,11 @@ class RestaurantesFragment : Fragment() {
         binding.recyclerEstabelecimentos.layoutManager = linearLayoutManager
         binding.recyclerEstabelecimentos.adapter = EstabelecimentosAdapter(listaEstabelecimentos)
 
+        var linearLayoutManager2: LinearLayoutManager = LinearLayoutManager(requireContext())
+        linearLayoutManager2.orientation = RecyclerView.VERTICAL
+        binding.recycleExploreOutros.layoutManager = linearLayoutManager2
+        binding.recycleExploreOutros.adapter = ExploreLocaisAdapter(listaExploreOutros)
+
         return view
     }
 
@@ -50,11 +57,120 @@ class RestaurantesFragment : Fragment() {
         super.onResume()
         estabelecimentoRestaurantes()
         estabelecimentoEcoTurismo()
+        estabelecimentoReligiosidade()
+        estabelecimentoPousadas()
+        estabelecimentoPhistorico()
+        exploreOutros()
     }
 
     override fun onPause() {
         super.onPause()
         listaEstabelecimentos.clear()
+        listaExploreOutros.clear()
+    }
+
+    fun exploreOutros(){
+        db.collection("estabelecimentos")
+            .get()
+            .addOnSuccessListener { result ->
+                for (documents in result){
+                    var note = documents.toObject(EstabelecimentosModel::class.java)
+
+                    var p: EstabelecimentosModel = EstabelecimentosModel(
+                        nomeEstabelecimento = note!!.nomeEstabelecimento,
+                        cidadeEstabelecimento = note!!.cidadeEstabelecimento
+                    )
+                    this.listaExploreOutros.add(p)
+                }
+                binding.recycleExploreOutros.adapter?.notifyDataSetChanged()
+            }
+    }
+
+    fun estabelecimentoReligiosidade(){
+
+        if(args.recebeAtividade.equals("Religiosidade")){
+            var spaceRef = storageRef.child("atividades/"+args.recebeAtividade+".png")
+            spaceRef.downloadUrl.addOnSuccessListener {
+                Glide.with(this).load(it).into(binding.iconeAtividades)
+            }
+
+            db.collection("estabelecimentos")
+                .whereEqualTo("tipoEstabelecimento", args.recebeAtividade)
+                .get()
+                .addOnSuccessListener { result ->
+                    for (documents in result){
+                        var note = documents.toObject(EstabelecimentosModel::class.java)
+
+                        var p: EstabelecimentosModel = EstabelecimentosModel(
+                            nomeEstabelecimento = note!!.nomeEstabelecimento,
+                            cidadeEstabelecimento = note!!.cidadeEstabelecimento
+                        )
+                        this.listaEstabelecimentos.add(p)
+                        binding.descricaoTipoEstabelecimento.text = note!!.descricaoTipoEstabelecimento
+                        binding.tipoEstabelecimento.text = note!!.tipoEstabelecimento
+                    }
+                    binding.recyclerEstabelecimentos.adapter?.notifyDataSetChanged()
+                }
+
+        }
+    }
+
+    fun estabelecimentoPhistorico(){
+
+        if(args.recebeAtividade.equals("P.Historico")){
+            var spaceRef = storageRef.child("atividades/"+args.recebeAtividade+".png")
+            spaceRef.downloadUrl.addOnSuccessListener {
+                Glide.with(this).load(it).into(binding.iconeAtividades)
+            }
+
+            db.collection("estabelecimentos")
+                .whereEqualTo("tipoEstabelecimento", args.recebeAtividade)
+                .get()
+                .addOnSuccessListener { result ->
+                    for (documents in result){
+                        var note = documents.toObject(EstabelecimentosModel::class.java)
+
+                        var p: EstabelecimentosModel = EstabelecimentosModel(
+                            nomeEstabelecimento = note!!.nomeEstabelecimento,
+                            cidadeEstabelecimento = note!!.cidadeEstabelecimento
+                        )
+                        this.listaEstabelecimentos.add(p)
+                        binding.descricaoTipoEstabelecimento.text = note!!.descricaoTipoEstabelecimento
+                        binding.tipoEstabelecimento.text = note!!.tipoEstabelecimento
+                    }
+                    binding.recyclerEstabelecimentos.adapter?.notifyDataSetChanged()
+                }
+
+        }
+    }
+
+    fun estabelecimentoPousadas(){
+
+        if(args.recebeAtividade.equals("Pousadas")){
+            var spaceRef = storageRef.child("atividades/"+args.recebeAtividade+".png")
+            spaceRef.downloadUrl.addOnSuccessListener {
+                Glide.with(this).load(it).into(binding.iconeAtividades)
+            }
+
+            db.collection("estabelecimentos")
+                .whereEqualTo("tipoEstabelecimento", args.recebeAtividade)
+                .get()
+                .addOnSuccessListener { result ->
+                    for (documents in result){
+                        var note = documents.toObject(EstabelecimentosModel::class.java)
+
+                        var p: EstabelecimentosModel = EstabelecimentosModel(
+                            nomeEstabelecimento = note!!.nomeEstabelecimento,
+                            cidadeEstabelecimento = note!!.cidadeEstabelecimento
+                        )
+                        this.listaEstabelecimentos.add(p)
+                        binding.descricaoTipoEstabelecimento.text = note!!.descricaoTipoEstabelecimento
+                        binding.tipoEstabelecimento.text = note!!.tipoEstabelecimento
+                    }
+                    binding.recyclerEstabelecimentos.adapter?.notifyDataSetChanged()
+                }
+
+        }
     }
 
     fun estabelecimentoEcoTurismo(){
