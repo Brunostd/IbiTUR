@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -15,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
 class SignInActivity : AppCompatActivity() {
+
+    private lateinit var textVouMeCadastar: TextView
 
     companion object{
         private const val RC_SIGN_IN = 120
@@ -32,6 +35,11 @@ class SignInActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         buttonSignIn = findViewById(R.id.button_sign_in)
+        textVouMeCadastar = findViewById(R.id.textVouMeCadastrar)
+
+        textVouMeCadastar.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, CadastroActivity::class.java))
+        })
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
