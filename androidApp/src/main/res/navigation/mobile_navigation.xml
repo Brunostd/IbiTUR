@@ -53,6 +53,6 @@
     <fragment
         android:id="@+id/montarRotasFragment"
         android:name="com.deny.ibitur.android.ui.montar_rotas.MontarRotasFragment"
-        android:label="montar_rotas_fragment"
+        android:label="Montar rota"
         tools:layout="@layout/montar_rotas_fragment" />
 </navigation>

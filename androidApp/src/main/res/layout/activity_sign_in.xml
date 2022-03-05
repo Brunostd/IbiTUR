@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".SignInActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/person"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="background.json"
+        app:lottie_loop="true"></com.airbnb.lottie.LottieAnimationView>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
