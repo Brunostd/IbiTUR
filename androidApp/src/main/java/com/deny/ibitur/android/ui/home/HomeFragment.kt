@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -71,6 +72,10 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         linearLayoutManager3.orientation = RecyclerView.HORIZONTAL
         binding.recyclerRecomendados.layoutManager = linearLayoutManager3
         binding.recyclerRecomendados.adapter = RecomendadosAdapter(listaRecomendados)
+
+        binding.cardTelaMontarRota.setOnClickListener(View.OnClickListener {
+            findNavController().navigate(R.id.action_nav_home_to_montarRotasFragment)
+        })
 
         binding.searchViewHome?.isSubmitButtonEnabled = true
         binding.searchViewHome?.setOnQueryTextListener(this)

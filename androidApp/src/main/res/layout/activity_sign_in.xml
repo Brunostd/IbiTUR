@@ -20,6 +20,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/loginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -67,6 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/loginSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -103,7 +105,7 @@
         app:layout_constraintStart_toEndOf="@+id/radioButton" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonLoginEmailSenha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="18dp"
@@ -125,7 +127,7 @@
         app:colorScheme="dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"></com.google.android.gms.common.SignInButton>
+        app:layout_constraintTop_toBottomOf="@+id/buttonLoginEmailSenha"></com.google.android.gms.common.SignInButton>
 
     <TextView
         android:id="@+id/textView5"

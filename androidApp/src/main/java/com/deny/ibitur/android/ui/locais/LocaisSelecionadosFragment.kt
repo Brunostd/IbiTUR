@@ -6,11 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.databinding.LocaisSelecionadosFragmentBinding
+import com.deny.ibitur.android.helper.Base64Custom
 import com.deny.ibitur.android.model.CarroselModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -19,8 +22,15 @@ class LocaisSelecionadosFragment : Fragment() {
 
     private var _binding: LocaisSelecionadosFragmentBinding? = null
     private val args: LocaisSelecionadosFragmentArgs by navArgs()
+    private var base64Custom: Base64Custom = Base64Custom()
     private var db = Firebase.firestore
     private var storage: FirebaseStorage = FirebaseStorage.getInstance()
+    private var mAtuh: FirebaseAuth = FirebaseAuth.getInstance()
+
+    private lateinit var recebePreco: String
+    private lateinit var recebeNomeLocalidade: String
+    private lateinit var horarioFuncionamento: String
+    private lateinit var nomeEstabelecimento: String
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -53,12 +63,38 @@ class LocaisSelecionadosFragment : Fragment() {
                     spaceRef.downloadUrl.addOnSuccessListener {
                         Glide.with(this).load(it).into(binding.imageLocal)
                     }
+                    recebePreco = note!!.precoLocal
+                    recebeNomeLocalidade = note!!.nomeLocalidade
+                    horarioFuncionamento = note!!.horarioFuncionamento
+                    nomeEstabelecimento = note!!.nomeLugar
                     binding.textDescricaoLocal.text = note!!.descricaoLugar
                     binding.textEntradaLocal.text = note!!.entradaLocal
                     //this.listaCarrosel.add(p)
                 }
                 //binding.recyclerViewCarrosel.adapter?.notifyDataSetChanged()
             }
+
+        var emailBase64 = base64Custom.codificarBase64(mAtuh.currentUser!!.email.toString())
+
+        binding.textAdicionarItemLista.setOnClickListener(View.OnClickListener {
+            val salvo = hashMapOf(
+                "idEmail" to emailBase64,
+                "nomeEstabelecimentoSalvo" to nomeEstabelecimento,
+                "nomeLocalizacaoSalvo" to recebeNomeLocalidade,
+                "horarioFuncionamentoSalvo" to horarioFuncionamento,
+                "preco" to recebePreco,
+                "tempoEstimado" to "--"
+            )
+
+            db.collection("lugaresSalvos")
+                .add(salvo)
+                .addOnSuccessListener {
+                    Toast.makeText(requireContext(), "Item salvo com sucesso no carrinho", Toast.LENGTH_LONG).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(requireContext(), "Falha em salvar o item", Toast.LENGTH_LONG).show()
+                }
+        })
 
         return view
     }

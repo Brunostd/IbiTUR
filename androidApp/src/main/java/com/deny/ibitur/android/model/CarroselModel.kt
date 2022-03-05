@@ -7,4 +7,6 @@ class CarroselModel(
 ) {
     var descricaoLugar: String = ""
     var entradaLocal: String = ""
+    var precoLocal: String = ""
+    var horarioFuncionamento: String = ""
 }

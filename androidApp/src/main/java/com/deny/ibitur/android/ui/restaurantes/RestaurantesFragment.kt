@@ -13,6 +13,7 @@ import com.deny.ibitur.android.adapter.EstabelecimentosAdapter
 import com.deny.ibitur.android.adapter.ExploreLocaisAdapter
 import com.deny.ibitur.android.databinding.RestaurantesFragmentBinding
 import com.deny.ibitur.android.model.EstabelecimentosModel
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -47,6 +48,8 @@ class RestaurantesFragment : Fragment() {
 
         var linearLayoutManager2: LinearLayoutManager = LinearLayoutManager(requireContext())
         linearLayoutManager2.orientation = RecyclerView.VERTICAL
+        val divider = MaterialDividerItemDecoration(requireContext()!!, LinearLayoutManager.VERTICAL /*or LinearLayoutManager.HORIZONTAL*/)
+        binding.recycleExploreOutros.addItemDecoration(divider)
         binding.recycleExploreOutros.layoutManager = linearLayoutManager2
         binding.recycleExploreOutros.adapter = ExploreLocaisAdapter(listaExploreOutros)
 
