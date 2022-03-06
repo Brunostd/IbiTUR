@@ -54,5 +54,18 @@
         android:id="@+id/montarRotasFragment"
         android:name="com.deny.ibitur.android.ui.montar_rotas.MontarRotasFragment"
         android:label="Montar rota"
-        tools:layout="@layout/montar_rotas_fragment" />
+        tools:layout="@layout/montar_rotas_fragment" >
+        <action
+            android:id="@+id/action_montarRotasFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.deny.ibitur.android.MapsFragment"
+        android:label="Localização"
+        tools:layout="@layout/fragment_maps" >
+        <argument
+            android:name="nomeEstabelecimento"
+            app:argType="string" />
+    </fragment>
 </navigation>

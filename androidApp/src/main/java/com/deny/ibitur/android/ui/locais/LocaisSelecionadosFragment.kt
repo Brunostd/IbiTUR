@@ -14,6 +14,7 @@ import com.deny.ibitur.android.databinding.LocaisSelecionadosFragmentBinding
 import com.deny.ibitur.android.helper.Base64Custom
 import com.deny.ibitur.android.model.CarroselModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -31,6 +32,8 @@ class LocaisSelecionadosFragment : Fragment() {
     private lateinit var recebeNomeLocalidade: String
     private lateinit var horarioFuncionamento: String
     private lateinit var nomeEstabelecimento: String
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -67,6 +70,8 @@ class LocaisSelecionadosFragment : Fragment() {
                     recebeNomeLocalidade = note!!.nomeLocalidade
                     horarioFuncionamento = note!!.horarioFuncionamento
                     nomeEstabelecimento = note!!.nomeLugar
+                    latitude = note!!.latitude
+                    longitude = note!!.longitude
                     binding.textDescricaoLocal.text = note!!.descricaoLugar
                     binding.textEntradaLocal.text = note!!.entradaLocal
                     //this.listaCarrosel.add(p)
@@ -83,7 +88,9 @@ class LocaisSelecionadosFragment : Fragment() {
                 "nomeLocalizacaoSalvo" to recebeNomeLocalidade,
                 "horarioFuncionamentoSalvo" to horarioFuncionamento,
                 "preco" to recebePreco,
-                "tempoEstimado" to "--"
+                "tempoEstimado" to "--",
+                "latitude" to latitude,
+                "longitude" to longitude
             )
 
             db.collection("lugaresSalvos")

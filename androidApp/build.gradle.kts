@@ -2,6 +2,7 @@ plugins {
     id("com.google.gms.google-services")
     id("com.android.application")
     id("androidx.navigation.safeargs")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     kotlin("android")
     apply{"com.android.application"}
     apply{"com.google.gms.google-services"}
@@ -43,6 +44,7 @@ dependencies {
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.firebaseui:firebase-ui-storage:7.2.0")
     implementation("com.google.android.gms:play-services-auth:20.1.0")
+    implementation("com.google.android.gms:play-services-maps:18.0.1")
 
     implementation("com.github.bumptech.glide:glide:4.13.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
