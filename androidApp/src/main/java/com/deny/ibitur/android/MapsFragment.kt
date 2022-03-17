@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.deny.ibitur.android.model.CarroselModel
-import com.deny.ibitur.android.model.RotaSalvaModel
+//import com.deny.ibitur.android.model.RotaSalvaModel
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -28,7 +28,7 @@ class MapsFragment : Fragment() {
 
     var db = Firebase.firestore
     private val args: MapsFragmentArgs by navArgs()
-    lateinit var rotaSalva: RotaSalvaModel
+    //lateinit var rotaSalva: RotaSalvaModel
 
 
     private val callback = OnMapReadyCallback { googleMap ->
@@ -42,7 +42,7 @@ class MapsFragment : Fragment() {
          * user has installed Google Play services and returned to the app.
          */
 
-        db.collection("lugaresSalvos")
+        /*db.collection("lugaresSalvos")
             .whereEqualTo("nomeEstabelecimentoSalvo", args.nomeEstabelecimento)
             .get()
             .addOnSuccessListener { result ->
@@ -55,7 +55,7 @@ class MapsFragment : Fragment() {
                     googleMap.addMarker(MarkerOptions().position(sydney).title(note!!.nomeEstabelecimentoSalvo))
                     googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
                 }
-            }
+            }*/
     }
 
     override fun onCreateView(

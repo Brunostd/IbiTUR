@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.databinding.LocaisSelecionadosFragmentBinding
 import com.deny.ibitur.android.helper.Base64Custom
+//import com.deny.ibitur.android.helper.Base64Custom
 import com.deny.ibitur.android.model.CarroselModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.GeoPoint

@@ -7,18 +7,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:192790175413:android:5bc267d8670b83365828fc",
+        "mobilesdk_app_id": "1:192790175413:android:e51bcb9ebad588335828fc",
         "android_client_info": {
           "package_name": "com.deny.ibitur.android"
         }
       },
       "oauth_client": [
         {
-          "client_id": "192790175413-beq03bhdo43uq0hdf1l3rk0beuhq1h51.apps.googleusercontent.com",
+          "client_id": "192790175413-tqv8vk9kntkl43roed09j1jendql7url.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.deny.ibitur.android",
-            "certificate_hash": "a93dd328be732a6c02efac788adfe483be28d553"
+            "certificate_hash": "7fb8d33f024b1b5437572d5a4b49d3783b0384f8"
           }
         },
         {
@@ -28,7 +28,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBWeF1QXssgQkchJ5wWCUq0q2-Y29Jd6SM"
+          "current_key": "AIzaSyC5u24jiQDLH6CTVEtJvCNKoB9257GFb7s"
         }
       ],
       "services": {

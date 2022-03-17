@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/montarRotasFragment"
-        android:name="com.deny.ibitur.android.ui.montar_rotas.MontarRotasFragment"
+        android:name="com.deny.ibitur.android.ui.rotas.MontarRotasFragment"
         android:label="Montar rota"
         tools:layout="@layout/montar_rotas_fragment" >
         <action
