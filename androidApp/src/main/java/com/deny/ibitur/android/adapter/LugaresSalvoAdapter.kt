@@ -3,21 +3,42 @@ package com.deny.ibitur.android.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.LugaresSalvoModel
+import com.google.firebase.storage.FirebaseStorage
 
 class LugaresSalvoAdapter(var listaLugaresSalvos: MutableList<LugaresSalvoModel>):
     RecyclerView.Adapter<LugaresSalvoAdapter.MyViewHolder>() {
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+
+        var storage: FirebaseStorage = FirebaseStorage.getInstance()
+
         fun bind(lugaresSalvoModel: LugaresSalvoModel){
 
+            var storageRef = storage.reference
+
+            var imageLugaresSalvos: ImageView = itemView.findViewById(R.id.imageLugaresSalvos)
             var nomeEstabelecimentoSalvo: TextView = itemView.findViewById(R.id.nomeEstabelecimentoSalvo)
             var nomeLocalizacaoSalvo: TextView = itemView.findViewById(R.id.nomeLocalizacaoSalvo)
             var horarioFuncionamentoSalvo: TextView = itemView.findViewById(R.id.horarioFuncionamentoSalvo)
             var tempoEstimado: TextView = itemView.findViewById(R.id.tempoEstimado)
             var preco: TextView = itemView.findViewById(R.id.preco)
+
+            var spaceRef = storageRef.child("lugares/"+lugaresSalvoModel.nomeEstabelecimentoSalvo+".jpg")
+
+            spaceRef.downloadUrl.addOnSuccessListener {
+                Glide.with(itemView.context).load(it).into(imageLugaresSalvos)
+            }
+
+            nomeEstabelecimentoSalvo.text = lugaresSalvoModel.nomeEstabelecimentoSalvo
+            nomeLocalizacaoSalvo.text = lugaresSalvoModel.nomeLocalizacaoSalvo
+            horarioFuncionamentoSalvo.text = lugaresSalvoModel.horarioFuncionamentoSalvo
+            tempoEstimado.text = lugaresSalvoModel.tempoEstimado
+            preco.text = lugaresSalvoModel.preco
 
         }
     }
