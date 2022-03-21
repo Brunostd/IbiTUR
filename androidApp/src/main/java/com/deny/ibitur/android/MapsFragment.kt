@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.deny.ibitur.android.model.CarroselModel
+import com.deny.ibitur.android.model.LugaresSalvoModel
 //import com.deny.ibitur.android.model.RotaSalvaModel
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -42,12 +43,12 @@ class MapsFragment : Fragment() {
          * user has installed Google Play services and returned to the app.
          */
 
-        /*db.collection("lugaresSalvos")
+        db.collection("lugaresSalvos")
             .whereEqualTo("nomeEstabelecimentoSalvo", args.nomeEstabelecimento)
             .get()
             .addOnSuccessListener { result ->
                 for (documents in result){
-                    var note = documents.toObject(RotaSalvaModel::class.java)
+                    var note = documents.toObject(LugaresSalvoModel::class.java)
 
                     var latLng: LatLng = LatLng(note!!.latitude, note!!.longitude)
 
@@ -55,7 +56,7 @@ class MapsFragment : Fragment() {
                     googleMap.addMarker(MarkerOptions().position(sydney).title(note!!.nomeEstabelecimentoSalvo))
                     googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
                 }
-            }*/
+            }
     }
 
     override fun onCreateView(

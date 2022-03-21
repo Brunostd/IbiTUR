@@ -54,6 +54,10 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.13.0")
 
+    //AboutPage
+    implementation("io.github.medyo:android-about-page:2.0.0")
+
+    //LOTTIE
     implementation ("com.airbnb.android:lottie:5.0.1")
     // Required only if Facebook login support is required
     // Find the latest Facebook SDK releases here: https://goo.gl/Ce5L94

@@ -40,6 +40,9 @@
         <argument
             android:name="recebeLocal"
             app:argType="string" />
+        <action
+            android:id="@+id/action_locaisSelecionadosFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
     <fragment
         android:id="@+id/restaurantesFragment"

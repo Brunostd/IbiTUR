@@ -1,12 +1,16 @@
 package com.deny.ibitur.android.ui.locais
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
@@ -14,6 +18,7 @@ import com.deny.ibitur.android.databinding.LocaisSelecionadosFragmentBinding
 import com.deny.ibitur.android.helper.Base64Custom
 //import com.deny.ibitur.android.helper.Base64Custom
 import com.deny.ibitur.android.model.CarroselModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.firestore.ktx.firestore
@@ -104,11 +109,35 @@ class LocaisSelecionadosFragment : Fragment() {
                 }
         })
 
+        binding.buttonMaisDetalhes.setOnClickListener(View.OnClickListener {
+            maisDetalhes()
+        })
+
+        binding.buttonVerNoMapa.setOnClickListener(View.OnClickListener {
+            val action = LocaisSelecionadosFragmentDirections.actionLocaisSelecionadosFragmentToMapsFragment(nomeEstabelecimento)
+            findNavController().navigate(action)
+        })
+
         return view
     }
 
-    fun trazerLugar(){
+    fun maisDetalhes(){
+        var layout = LayoutInflater.from(context).inflate(R.layout.dialog_mais_detalhes, null, false)
 
+        /*var imagem: ImageView = layout.findViewById(R.id.imageViewMaisDetalhes)
+        var detalhes: TextView = layout.findViewById(R.id.textViewMaisDetalhes)
+
+        imagem.setImageDrawable(binding.imageLocal.drawable)
+        detalhes.text = binding.textDescricaoLocal.text*/
+
+        var alertDialog = MaterialAlertDialogBuilder(requireContext(),  R.style.ThemeOverlay_App_MaterialAlertDialog)
+        alertDialog.setView(layout)
+        alertDialog.setNegativeButton("Cancel", null)
+        alertDialog.setPositiveButton("IR"){d, i->
+
+
+
+        }.show()
     }
 
     override fun onDestroyView() {

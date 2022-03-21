@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/interaction"
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="interaction_social_media.json"
+        app:lottie_loop="true"></com.airbnb.lottie.LottieAnimationView>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/instagram"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/interaction"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="instagram.json"
+        app:lottie_loop="false"></com.airbnb.lottie.LottieAnimationView>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/facebook"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instagram"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="facebook.json"
+        app:lottie_loop="false"></com.airbnb.lottie.LottieAnimationView>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/internet"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facebook"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="internet.json"
+        app:lottie_loop="false"></com.airbnb.lottie.LottieAnimationView>
+
+    <RadioGroup
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/instagram"
+        app:layout_constraintTop_toBottomOf="@+id/interaction">
+
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Instagram" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Facebook" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Site" />
+    </RadioGroup>
+</androidx.constraintlayout.widget.ConstraintLayout>

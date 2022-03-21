@@ -5,10 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.LugaresSalvoModel
+import com.deny.ibitur.android.ui.rotas.MontarRotasFragmentDirections
 import com.google.firebase.storage.FirebaseStorage
 
 class LugaresSalvoAdapter(var listaLugaresSalvos: MutableList<LugaresSalvoModel>):
@@ -21,6 +24,7 @@ class LugaresSalvoAdapter(var listaLugaresSalvos: MutableList<LugaresSalvoModel>
 
             var storageRef = storage.reference
 
+            var cardLugaresSalvo: CardView = itemView.findViewById(R.id.cardLugaresSalvo)
             var imageLugaresSalvos: ImageView = itemView.findViewById(R.id.imageLugaresSalvos)
             var nomeEstabelecimentoSalvo: TextView = itemView.findViewById(R.id.nomeEstabelecimentoSalvo)
             var nomeLocalizacaoSalvo: TextView = itemView.findViewById(R.id.nomeLocalizacaoSalvo)
@@ -33,6 +37,11 @@ class LugaresSalvoAdapter(var listaLugaresSalvos: MutableList<LugaresSalvoModel>
             spaceRef.downloadUrl.addOnSuccessListener {
                 Glide.with(itemView.context).load(it).into(imageLugaresSalvos)
             }
+
+            cardLugaresSalvo.setOnClickListener(View.OnClickListener {
+                val action = MontarRotasFragmentDirections.actionMontarRotasFragmentToMapsFragment(lugaresSalvoModel.nomeEstabelecimentoSalvo)
+                itemView.findNavController().navigate(action)
+            })
 
             nomeEstabelecimentoSalvo.text = lugaresSalvoModel.nomeEstabelecimentoSalvo
             nomeLocalizacaoSalvo.text = lugaresSalvoModel.nomeLocalizacaoSalvo

@@ -6,6 +6,22 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.App" parent="Theme.MaterialComponents">
+        ...
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+    </style>
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.MaterialComponents">
+        <item name="colorPrimary">#000000</item>
+        <item name="colorSecondary">#ADFF2F</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#6B8E23</item>
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.Material3</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.Material3.Title.Text</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.AppCompat.Button</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.AppCompat.Button</item>
+    </style>
+
 </resources>
