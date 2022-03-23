@@ -7,21 +7,26 @@
     tools:context=".ui.cidades.CidadesFragment" >
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
         android:layout_width="0dp"
         android:layout_height="213dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="18dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewCidadeRecomendada"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:src="@drawable/ubajara" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/textViewCidadeRecomendada"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|start"
@@ -32,5 +37,81 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start|left"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="#FFF0D8"
+            android:drawableLeft="@drawable/ic_baseline_map_24"
+            android:text="Central"
+            android:textColor="#D27C4A"
+            app:cornerRadius="20dp" />
+
     </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="18dp"
+        android:background="#E6FBFB"
+        android:visibility="visible"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3"
+        app:queryHint="Pesquise um lugar"
+        app:searchHintIcon="@drawable/ic_baseline_search_24"
+        app:searchIcon="@drawable/ic_baseline_search_24" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
+        android:text="Estabelecimentos"
+        android:textColor="#1E5A5A"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewHome" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
+        android:text="Lugares"
+        android:textColor="#1E5A5A"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerEstabelecimentosBuscar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerEstabelecimentosBuscar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerLugaresBuscar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

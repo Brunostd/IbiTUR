@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.CarroselModel
+import com.deny.ibitur.android.ui.cidades.CidadesFragmentDirections
 import com.deny.ibitur.android.ui.home.HomeFragment
 import com.deny.ibitur.android.ui.home.HomeFragmentDirections
 import com.google.android.gms.tasks.Task
@@ -44,7 +45,7 @@ class CarroselAdapter(var listaCarrosel: MutableList<CarroselModel>): RecyclerVi
 
             cardCarrosel.setOnClickListener(View.OnClickListener {
                 val action = HomeFragmentDirections.actionNavHomeToLocaisSelecionadosFragment(textLugaresCarrosel.text.toString())
-                itemView.findNavController().navigate(action)
+                    itemView.findNavController().navigate(action)
             })
         }
     }

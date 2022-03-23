@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_nav_home_to_montarRotasFragment"
             app:destination="@id/montarRotasFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_cidadesFragment"
+            app:destination="@id/cidadesFragment" />
     </fragment>
 
     <fragment
@@ -79,4 +82,16 @@
         android:name="com.deny.ibitur.android.ui.guias.GuiasFragment"
         android:label="Escolha seu guia"
         tools:layout="@layout/guias_fragment" />
+    <fragment
+        android:id="@+id/cidadesFragment"
+        android:name="com.deny.ibitur.android.ui.cidades.CidadesFragment"
+        android:label="cidades_fragment"
+        tools:layout="@layout/cidades_fragment" >
+        <argument
+            android:name="recebeCidade"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_cidadesFragment_to_locaisSelecionadosFragment"
+            app:destination="@id/locaisSelecionadosFragment" />
+    </fragment>
 </navigation>
