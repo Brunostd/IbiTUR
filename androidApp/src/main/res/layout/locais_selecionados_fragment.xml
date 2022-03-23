@@ -188,14 +188,14 @@
             android:layout_height="60dp"
             android:layout_marginStart="18dp"
             android:text="Ver no mapa"
-            app:layout_constraintEnd_toStartOf="@+id/button4"
+            app:layout_constraintEnd_toStartOf="@+id/buttonMarcarVisita"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/turismo" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/buttonMarcarVisita"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginStart="18dp"

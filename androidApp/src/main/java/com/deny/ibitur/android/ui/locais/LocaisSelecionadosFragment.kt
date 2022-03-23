@@ -118,6 +118,10 @@ class LocaisSelecionadosFragment : Fragment() {
             findNavController().navigate(action)
         })
 
+        binding.buttonMarcarVisita.setOnClickListener(View.OnClickListener {
+            findNavController().navigate(R.id.action_locaisSelecionadosFragment_to_guiasFragment)
+        })
+
         return view
     }
 

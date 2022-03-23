@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_locaisSelecionadosFragment_to_mapsFragment"
             app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_locaisSelecionadosFragment_to_guiasFragment"
+            app:destination="@id/guiasFragment" />
     </fragment>
     <fragment
         android:id="@+id/restaurantesFragment"
@@ -71,4 +74,9 @@
             android:name="nomeEstabelecimento"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/guiasFragment"
+        android:name="com.deny.ibitur.android.ui.guias.GuiasFragment"
+        android:label="Escolha seu guia"
+        tools:layout="@layout/guias_fragment" />
 </navigation>
