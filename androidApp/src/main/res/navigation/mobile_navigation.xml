@@ -58,6 +58,9 @@
         <argument
             android:name="recebeAtividade"
             app:argType="string" />
+        <action
+            android:id="@+id/action_restaurantesFragment_to_estabelecimentoEscolhidoFragment"
+            app:destination="@id/estabelecimentoEscolhidoFragment" />
     </fragment>
     <fragment
         android:id="@+id/montarRotasFragment"
@@ -93,5 +96,20 @@
         <action
             android:id="@+id/action_cidadesFragment_to_locaisSelecionadosFragment"
             app:destination="@id/locaisSelecionadosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/estabelecimentoEscolhidoFragment"
+        android:name="com.deny.ibitur.android.ui.estabelecimento_escolhido.EstabelecimentoEscolhidoFragment"
+        android:label="estabelecimento_escolhido_fragment"
+        tools:layout="@layout/estabelecimento_escolhido_fragment" >
+        <argument
+            android:name="recebeEstabelecimento"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_estabelecimentoEscolhidoFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_estabelecimentoEscolhidoFragment_to_guiasFragment"
+            app:destination="@id/guiasFragment" />
     </fragment>
 </navigation>

@@ -7,4 +7,9 @@ class EstabelecimentosModel(
 ) {
     var tipoEstabelecimento: String = ""
     var descricaoTipoEstabelecimento: String = ""
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var entradaLocal: String = ""
+    var horarioFuncionamento: String = ""
+    var precoLocal: String = ""
 }

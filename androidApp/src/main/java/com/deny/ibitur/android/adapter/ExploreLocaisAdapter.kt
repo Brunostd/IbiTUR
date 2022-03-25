@@ -3,13 +3,17 @@ package com.deny.ibitur.android.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.EstabelecimentosModel
+import com.deny.ibitur.android.ui.restaurantes.RestaurantesFragmentDirections
 //import com.deny.ibitur.android.R
 import com.google.firebase.storage.FirebaseStorage
 
@@ -25,12 +29,18 @@ class ExploreLocaisAdapter(var listaExploreLocais: MutableList<EstabelecimentosM
             var imageExploreLocais: ImageView = itemView.findViewById(R.id.imageExplore)
             var nomeExploreLocais: TextView = itemView.findViewById(R.id.nomeExplore)
             var cidadeExploreLocais: TextView = itemView.findViewById(R.id.cidadeExplore)
+            var buttonExploreLocais: Button = itemView.findViewById(R.id.buttonExploreLocais)
 
             var spaceRef = storageRef.child("estabelecimentos/"+exploreLocaisModel.nomeEstabelecimento+".jpg")
 
             spaceRef.downloadUrl.addOnSuccessListener {
                 Glide.with(itemView.context).load(it).transform(CircleCrop()).into(imageExploreLocais)
             }
+
+            buttonExploreLocais.setOnClickListener(View.OnClickListener {
+                val action = RestaurantesFragmentDirections.actionRestaurantesFragmentToEstabelecimentoEscolhidoFragment(nomeExploreLocais.text.toString())
+                itemView.findNavController().navigate(action)
+            })
 
             nomeExploreLocais.text = exploreLocaisModel.nomeEstabelecimento
             cidadeExploreLocais.text = exploreLocaisModel.cidadeEstabelecimento
