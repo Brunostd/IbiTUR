@@ -58,9 +58,13 @@ dependencies {
     implementation("io.github.medyo:android-about-page:2.0.0")
 
     //LOTTIE
-    implementation ("com.airbnb.android:lottie:5.0.1")
+    implementation("com.airbnb.android:lottie:5.0.1")
     // Required only if Facebook login support is required
     // Find the latest Facebook SDK releases here: https://goo.gl/Ce5L94
     //implementation("com.facebook.android:facebook-android-sdk:8")
+
+    //float action menu
+    implementation("com.github.clans:fab:1.6.4")
+
 
 }
