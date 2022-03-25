@@ -27,13 +27,13 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.deny.ibitur.android.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_perfil"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.deny.ibitur.android.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_sair"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/locaisSelecionadosFragment"

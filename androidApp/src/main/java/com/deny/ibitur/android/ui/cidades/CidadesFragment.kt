@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
+import com.deny.ibitur.android.adapter.Carrosel2Adapter
 import com.deny.ibitur.android.adapter.CarroselAdapter
 import com.deny.ibitur.android.adapter.EstabelecimentosAdapter
 import com.deny.ibitur.android.databinding.CidadesFragmentBinding
@@ -61,7 +62,7 @@ class CidadesFragment : Fragment() {
         var linearLayoutManager2: LinearLayoutManager = LinearLayoutManager(requireContext())
         linearLayoutManager2.orientation = RecyclerView.HORIZONTAL
         binding.recyclerLugaresBuscar.layoutManager = linearLayoutManager2
-        binding.recyclerLugaresBuscar.adapter = CarroselAdapter(listaLugares)
+        binding.recyclerLugaresBuscar.adapter = Carrosel2Adapter(listaLugares)
 
         return view
     }
