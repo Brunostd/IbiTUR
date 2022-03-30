@@ -10,7 +10,9 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.EstabelecimentosModel
 import com.deny.ibitur.android.ui.restaurantes.RestaurantesFragmentDirections
@@ -34,7 +36,9 @@ class ExploreLocaisAdapter(var listaExploreLocais: MutableList<EstabelecimentosM
             var spaceRef = storageRef.child("estabelecimentos/"+exploreLocaisModel.nomeEstabelecimento+".jpg")
 
             spaceRef.downloadUrl.addOnSuccessListener {
-                Glide.with(itemView.context).load(it).transform(CircleCrop()).into(imageExploreLocais)
+                val requestOptions = RequestOptions()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                Glide.with(itemView.context).load(it).apply(requestOptions).transform(CircleCrop()).into(imageExploreLocais)
             }
 
             buttonExploreLocais.setOnClickListener(View.OnClickListener {

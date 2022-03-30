@@ -9,6 +9,8 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.CarroselModel
 import com.deny.ibitur.android.ui.cidades.CidadesFragmentDirections
@@ -31,7 +33,9 @@ class Carrosel2Adapter(var listaCarrosel: MutableList<CarroselModel>): RecyclerV
             var spaceRef = storageRef.child("lugares/"+carroselModel.nomeLugar+".jpg")
 
             spaceRef.downloadUrl.addOnSuccessListener {
-                Glide.with(itemView.context).load(it).into(imageCarrosel)
+                val requestOptions = RequestOptions()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                Glide.with(itemView.context).load(it).apply(requestOptions).into(imageCarrosel)
             }
 
             //imageCarrosel.setImageResource(carroselModel.imageLugar)

@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.adapter.Carrosel2Adapter
 import com.deny.ibitur.android.adapter.CarroselAdapter
+import com.deny.ibitur.android.adapter.Estabelecimentos2Adapter
 import com.deny.ibitur.android.adapter.EstabelecimentosAdapter
 import com.deny.ibitur.android.databinding.CidadesFragmentBinding
 import com.deny.ibitur.android.model.CarroselModel
@@ -57,7 +58,7 @@ class CidadesFragment : Fragment() {
         var linearLayoutManager: LinearLayoutManager = LinearLayoutManager(requireContext())
         linearLayoutManager.orientation = RecyclerView.HORIZONTAL
         binding.recyclerEstabelecimentosBuscar.layoutManager = linearLayoutManager
-        binding.recyclerEstabelecimentosBuscar.adapter = EstabelecimentosAdapter(listaEstabelecimentos)
+        binding.recyclerEstabelecimentosBuscar.adapter = Estabelecimentos2Adapter(listaEstabelecimentos)
 
         var linearLayoutManager2: LinearLayoutManager = LinearLayoutManager(requireContext())
         linearLayoutManager2.orientation = RecyclerView.HORIZONTAL

@@ -9,6 +9,8 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.RecomendadosModel
 import com.deny.ibitur.android.ui.home.HomeFragmentDirections
@@ -30,7 +32,9 @@ class RecomendadosAdapter(var listaRecomendados: MutableList<RecomendadosModel>)
             var spaceRef = storageRef.child("recomendados/"+recomendadosModel.nomeCidade+".jpg")
 
             spaceRef.downloadUrl.addOnSuccessListener {
-                Glide.with(itemView.context).load(it).into(imageCidade)
+                val requestOptions = RequestOptions()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                Glide.with(itemView.context).load(it).apply(requestOptions).into(imageCidade)
             }
 
             cardCidadeRecomendada.setOnClickListener(View.OnClickListener {

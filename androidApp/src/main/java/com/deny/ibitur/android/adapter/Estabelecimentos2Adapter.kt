@@ -13,11 +13,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.EstabelecimentosModel
+import com.deny.ibitur.android.ui.cidades.CidadesFragmentDirections
 import com.deny.ibitur.android.ui.restaurantes.RestaurantesFragmentDirections
 import com.google.firebase.storage.FirebaseStorage
 
-class EstabelecimentosAdapter(var listaEstabelecimentos: MutableList<EstabelecimentosModel>):
-    RecyclerView.Adapter<EstabelecimentosAdapter.MyViewHolder>() {
+class Estabelecimentos2Adapter(var listaEstabelecimentos: MutableList<EstabelecimentosModel>):
+    RecyclerView.Adapter<Estabelecimentos2Adapter.MyViewHolder>() {
 
     var storage: FirebaseStorage = FirebaseStorage.getInstance()
 
@@ -39,7 +40,7 @@ class EstabelecimentosAdapter(var listaEstabelecimentos: MutableList<Estabelecim
             }
 
             cardAtividades.setOnClickListener(View.OnClickListener {
-                val action = RestaurantesFragmentDirections.actionRestaurantesFragmentToEstabelecimentoEscolhidoFragment(nomeEstabelecimentos.text.toString())
+                val action = CidadesFragmentDirections.actionCidadesFragmentToEstabelecimentoEscolhidoFragment(nomeEstabelecimentos.text.toString())
                 itemView.findNavController().navigate(action)
             })
 

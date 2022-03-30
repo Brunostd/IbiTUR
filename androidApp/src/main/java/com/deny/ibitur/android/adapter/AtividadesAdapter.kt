@@ -9,6 +9,8 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.AtividadesModel
 import com.deny.ibitur.android.ui.home.HomeFragmentDirections
@@ -30,7 +32,9 @@ class AtividadesAdapter(var listaAtividades: MutableList<AtividadesModel>): Recy
             var spaceRef = storageRef.child("atividades/"+atividadesModel.tituloAtividade+".png")
 
             spaceRef.downloadUrl.addOnSuccessListener {
-                Glide.with(itemView.context).load(it).into(imageAtividades)
+                val requestOptions = RequestOptions()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                Glide.with(itemView.context).load(it).apply(requestOptions).into(imageAtividades)
             }
 
             //imageAtividades.setImageResource(atividadesModel.imageAtividade)

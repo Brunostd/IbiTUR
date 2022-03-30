@@ -88,7 +88,7 @@
     <fragment
         android:id="@+id/cidadesFragment"
         android:name="com.deny.ibitur.android.ui.cidades.CidadesFragment"
-        android:label="cidades_fragment"
+        android:label="Cidade"
         tools:layout="@layout/cidades_fragment" >
         <argument
             android:name="recebeCidade"
@@ -96,11 +96,14 @@
         <action
             android:id="@+id/action_cidadesFragment_to_locaisSelecionadosFragment"
             app:destination="@id/locaisSelecionadosFragment" />
+        <action
+            android:id="@+id/action_cidadesFragment_to_estabelecimentoEscolhidoFragment"
+            app:destination="@id/estabelecimentoEscolhidoFragment" />
     </fragment>
     <fragment
         android:id="@+id/estabelecimentoEscolhidoFragment"
         android:name="com.deny.ibitur.android.ui.estabelecimento_escolhido.EstabelecimentoEscolhidoFragment"
-        android:label="estabelecimento_escolhido_fragment"
+        android:label="Estabelecimento"
         tools:layout="@layout/estabelecimento_escolhido_fragment" >
         <argument
             android:name="recebeEstabelecimento"

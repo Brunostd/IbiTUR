@@ -7,7 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
 import com.deny.ibitur.android.R
 import com.deny.ibitur.android.model.GuiaModel
 import com.google.firebase.ktx.Firebase
@@ -33,7 +35,9 @@ class GuiaAdapter(var listaGuia: MutableList<GuiaModel>):
             var spaceRef = storageRef.child("guias/"+guiaModel.nomeGuia+".jpg")
 
             spaceRef.downloadUrl.addOnSuccessListener {
-                Glide.with(itemView.context).load(it).transform(CircleCrop()).into(imageGuia)
+                val requestOptions = RequestOptions()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                Glide.with(itemView.context).load(it).apply(requestOptions).transform(CircleCrop()).into(imageGuia)
             }
 
             nomeGuia.text = guiaModel.nomeGuia
