@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.restaurantes.RestaurantesFragment" >
+    tools:context=".ui.fragments.restaurantes.RestaurantesFragment" >
 
     <TextView
         android:id="@+id/tipoEstabelecimento"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.deny.ibitur.android.ui.home.HomeFragment"
+        android:name="com.deny.ibitur.app.ui.fragments.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -26,18 +26,18 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.deny.ibitur.android.ui.gallery.GalleryFragment"
+        android:name="com.deny.ibitur.app.ui.fragments.gallery.GalleryFragment"
         android:label="@string/menu_perfil"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.deny.ibitur.android.ui.slideshow.SlideshowFragment"
+        android:name="com.deny.ibitur.app.ui.fragments.slideshow.SlideshowFragment"
         android:label="@string/menu_sair"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/locaisSelecionadosFragment"
-        android:name="com.deny.ibitur.android.ui.locais.LocaisSelecionadosFragment"
+        android:name="com.deny.ibitur.app.ui.fragments.locais.LocaisSelecionadosFragment"
         android:label="Lugar selecionado"
         tools:layout="@layout/locais_selecionados_fragment" >
         <argument
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/restaurantesFragment"
-        android:name="com.deny.ibitur.android.ui.restaurantes.RestaurantesFragment"
+        android:name="com.deny.ibitur.app.ui.fragments.restaurantes.RestaurantesFragment"
         android:label="Atividade selecionada"
         tools:layout="@layout/restaurantes_fragment" >
         <argument
@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/montarRotasFragment"
-        android:name="com.deny.ibitur.android.ui.rotas.MontarRotasFragment"
+        android:name="com.deny.ibitur.app.ui.fragments.rotas.MontarRotasFragment"
         android:label="Montar rota"
         tools:layout="@layout/montar_rotas_fragment" >
         <action
@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="com.deny.ibitur.android.MapsFragment"
+        android:name="com.deny.ibitur.app.ui.activities.MapsFragment"
         android:label="Localização"
         tools:layout="@layout/fragment_maps" >
         <argument
@@ -82,12 +82,12 @@
     </fragment>
     <fragment
         android:id="@+id/guiasFragment"
-        android:name="com.deny.ibitur.android.ui.guias.GuiasFragment"
+        android:name="com.deny.ibitur.app.ui.fragments.guias.GuiasFragment"
         android:label="Escolha seu guia"
         tools:layout="@layout/guias_fragment" />
     <fragment
         android:id="@+id/cidadesFragment"
-        android:name="com.deny.ibitur.android.ui.cidades.CidadesFragment"
+        android:name="com.deny.ibitur.app.ui.fragments.cidades.CidadesFragment"
         android:label="Cidade"
         tools:layout="@layout/cidades_fragment" >
         <argument
@@ -102,7 +102,7 @@
     </fragment>
     <fragment
         android:id="@+id/estabelecimentoEscolhidoFragment"
-        android:name="com.deny.ibitur.android.ui.estabelecimento_escolhido.EstabelecimentoEscolhidoFragment"
+        android:name="com.deny.ibitur.app.ui.fragments.estabelecimento_escolhido.EstabelecimentoEscolhidoFragment"
         android:label="Estabelecimento"
         tools:layout="@layout/estabelecimento_escolhido_fragment" >
         <argument

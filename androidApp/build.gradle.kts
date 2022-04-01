@@ -4,14 +4,12 @@ plugins {
     id("androidx.navigation.safeargs")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     kotlin("android")
-    apply{"com.android.application"}
-    apply{"com.google.gms.google-services"}
 }
 
 android {
     compileSdk = 31
     defaultConfig {
-        applicationId = "com.deny.ibitur.android"
+        applicationId = "com.deny.ibitur.app"
         minSdk = 21
         targetSdk = 31
         versionCode = 1
@@ -39,7 +37,9 @@ dependencies {
     implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.0")
-    implementation("com.google.firebase:firebase-auth-ktx:21.0.1")
+    implementation("com.google.firebase:firebase-bom:29.2.1")
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.firebaseui:firebase-ui-storage:7.2.0")
