@@ -26,9 +26,6 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: FragmentHomeBinding? = null
     private var db = Firebase.firestore
     private var listaCarrosel: MutableList<CarroselModel> = arrayListOf()
-    private var listaAtividades: MutableList<AtividadesModel> = arrayListOf()
-    private var listaRecomendados: MutableList<RecomendadosModel> = arrayListOf()
-
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -45,25 +42,26 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        /*val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }*/
+        homeViewModel.listaCarrosel.observe(viewLifecycleOwner){ value ->
+            var linearLayoutManager: LinearLayoutManager = LinearLayoutManager(requireContext())
+            linearLayoutManager.orientation = RecyclerView.HORIZONTAL
+            binding.recyclerViewCarrosel.layoutManager = linearLayoutManager
+            binding.recyclerViewCarrosel.adapter = CarroselAdapter(value)
+        }
 
-        var linearLayoutManager: LinearLayoutManager = LinearLayoutManager(requireContext())
-        linearLayoutManager.orientation = RecyclerView.HORIZONTAL
-        binding.recyclerViewCarrosel.layoutManager = linearLayoutManager
-        binding.recyclerViewCarrosel.adapter = CarroselAdapter(listaCarrosel)
+        homeViewModel.listaAtividades.observe(viewLifecycleOwner){ value ->
+            var linearLayoutManager2: LinearLayoutManager = LinearLayoutManager(requireContext())
+            linearLayoutManager2.orientation = RecyclerView.HORIZONTAL
+            binding.recyclerAtividades.layoutManager = linearLayoutManager2
+            binding.recyclerAtividades.adapter = AtividadesAdapter(value)
+        }
 
-        var linearLayoutManager2: LinearLayoutManager = LinearLayoutManager(requireContext())
-        linearLayoutManager2.orientation = RecyclerView.HORIZONTAL
-        binding.recyclerAtividades.layoutManager = linearLayoutManager2
-        binding.recyclerAtividades.adapter = AtividadesAdapter(listaAtividades)
-
-        var linearLayoutManager3: LinearLayoutManager = LinearLayoutManager(requireContext())
-        linearLayoutManager3.orientation = RecyclerView.HORIZONTAL
-        binding.recyclerRecomendados.layoutManager = linearLayoutManager3
-        binding.recyclerRecomendados.adapter = RecomendadosAdapter(listaRecomendados)
+        homeViewModel.listaRecomendados.observe(viewLifecycleOwner){ value ->
+            var linearLayoutManager3: LinearLayoutManager = LinearLayoutManager(requireContext())
+            linearLayoutManager3.orientation = RecyclerView.HORIZONTAL
+            binding.recyclerRecomendados.layoutManager = linearLayoutManager3
+            binding.recyclerRecomendados.adapter = RecomendadosAdapter(value)
+        }
 
         binding.cardTelaMontarRota.setOnClickListener(View.OnClickListener {
             findNavController().navigate(R.id.action_nav_home_to_montarRotasFragment)
@@ -73,114 +71,6 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         binding.searchViewHome?.setOnQueryTextListener(this)
 
         return root
-    }
-
-    override fun onResume() {
-        super.onResume()
-        lugaresProximos()
-        atividades()
-        recomendados()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        listaCarrosel.clear()
-        listaAtividades.clear()
-        listaRecomendados.clear()
-    }
-
-    /*fun addCarrosel(){
-        var p: CarroselModel = CarroselModel(R.drawable.mirante_bosco, "Mirante do bosco", "Tiangua")
-        listaCarrosel.add(p)
-    }*/
-
-    fun lugaresProximos(){
-        /*var p: CarroselModel = CarroselModel(R.drawable.mirante_bosco, "Mirante do bosoc", "Tiangua")
-        listaCarrosel.add(p)
-
-        db.collection("lugares")
-            .add(listaCarrosel[0])
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
-            }*/
-        db.collection("lugares")
-            .get()
-            .addOnSuccessListener { result ->
-                for (documents in result){
-                    var note = documents.toObject(CarroselModel::class.java)
-
-                    var p: CarroselModel = CarroselModel(
-                        //imageLugar = note!!.imageLugar,
-                        nomeLugar  = note!!.nomeLugar,
-                        nomeLocalidade = note!!.nomeLocalidade
-                    )
-                    this.listaCarrosel.add(p)
-                }
-                binding.recyclerViewCarrosel.adapter?.notifyDataSetChanged()
-            }
-    }
-
-    fun atividades(){
-
-        /*var p: AtividadesModel = AtividadesModel(R.drawable.ic_baseline_landscape_24, "Eco-Turismo")
-        listaAtividades.add(p)
-
-        db.collection("atividades")
-            .add(listaAtividades[0])
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
-            }*/
-
-        db.collection("atividades")
-            .get()
-            .addOnSuccessListener { result ->
-                for (documents in result){
-                    var note = documents.toObject(AtividadesModel::class.java)
-
-                    var n: AtividadesModel = AtividadesModel(
-                        //imageAtividade = note!!.imageAtividade,
-                        tituloAtividade = note!!.tituloAtividade
-                    )
-                    this.listaAtividades.add(n)
-                }
-                binding.recyclerAtividades.adapter?.notifyDataSetChanged()
-            }
-    }
-
-    fun recomendados(){
-        /*var p: RecomendadosModel = RecomendadosModel(R.drawable.ubajara, "Ubajara")
-        listaRecomendados.add(p)
-
-
-        db.collection("recomendados")
-            .add(listaRecomendados[0])
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
-            }*/
-
-        db.collection("recomendados")
-            .get()
-            .addOnSuccessListener { result ->
-                for (documents in result){
-                    var note = documents.toObject(RecomendadosModel::class.java)
-
-                    var n: RecomendadosModel = RecomendadosModel(
-                        //imageCidade = note!!.imageCidade,
-                        nomeCidade = note!!.nomeCidade
-                    )
-                    this.listaRecomendados.add(n)
-                }
-                binding.recyclerRecomendados.adapter?.notifyDataSetChanged()
-            }
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -224,5 +114,4 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         super.onDestroyView()
         _binding = null
     }
-
 }

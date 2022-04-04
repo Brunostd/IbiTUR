@@ -22,7 +22,7 @@ import com.google.firebase.ktx.Firebase
 class MapsFragment : Fragment() {
 
     var db = Firebase.firestore
-    private val args: com.deny.ibitur.app.MapsFragmentArgs by navArgs()
+    private val args: MapsFragmentArgs by navArgs()
     //lateinit var rotaSalva: RotaSalvaModel
 
 
