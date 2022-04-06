@@ -3,10 +3,9 @@ package com.deny.ibitur.app.model.atividades
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class GestorAtividadesModel {
+class GestorAtividadesModel(): GestorAtividadesRepository {
 
-    fun getListaAtividades(): MutableList<AtividadesModel>{
-
+    override fun getListAtividades(): MutableList<AtividadesModel> {
         var db = Firebase.firestore
         var listaAtividades: MutableList<AtividadesModel> = arrayListOf()
 
@@ -26,4 +25,5 @@ class GestorAtividadesModel {
 
         return listaAtividades
     }
+
 }

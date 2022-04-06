@@ -54,6 +54,23 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.13.0")
 
+    // Koin main features for Android
+    implementation("io.insert-koin:koin-android:3.2.0-beta-1")
+    // No more koin-android-viewmodel, koin-android-scope, koin-android-fragment
+
+    // Java Compatibility
+    implementation("io.insert-koin:koin-android-compat:3.2.0-beta-1")
+    // Jetpack WorkManager
+    implementation("io.insert-koin:koin-androidx-workmanager:3.2.0-beta-1")
+    // Navigation Graph
+    implementation("io.insert-koin:koin-androidx-navigation:3.2.0-beta-1")
+    // Jetpack Compose
+    implementation("io.insert-koin:koin-androidx-compose:3.2.0-beta-1")
+    // Koin Core features
+    implementation("io.insert-koin:koin-core:3.2.0-beta-1")
+    // Koin Test features
+    testImplementation("io.insert-koin:koin-test:3.2.0-beta-1")
+
     //AboutPage
     implementation("io.github.medyo:android-about-page:2.0.0")
 

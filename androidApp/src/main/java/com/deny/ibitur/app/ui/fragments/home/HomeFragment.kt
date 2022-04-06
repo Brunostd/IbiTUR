@@ -20,12 +20,15 @@ import com.deny.ibitur.app.model.carrosel.CarroselModel
 import com.deny.ibitur.app.model.recomendados.RecomendadosModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private var _binding: FragmentHomeBinding? = null
     private var db = Firebase.firestore
     private var listaCarrosel: MutableList<CarroselModel> = arrayListOf()
+
+    val homeViewModel: HomeViewModel by viewModel()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -36,8 +39,8 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        /*val homeViewModel =
+            ViewModelProvider(this).get(HomeViewModel::class.java)*/
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root

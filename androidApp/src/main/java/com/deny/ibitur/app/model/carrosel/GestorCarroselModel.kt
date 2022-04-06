@@ -5,12 +5,28 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class GestorCarroselModel {
+class GestorCarroselModel(): GestorCarroselRepository {
 
     var db = Firebase.firestore
 
-    fun getListaCarrosel(): MutableList<CarroselModel>{
+    fun getListaLugaresPorNome(recebeNome: String): MutableList<CarroselModel>{
 
+        var listaLugares: MutableList<CarroselModel> = arrayListOf()
+
+        db.collection("lugares")
+            .whereEqualTo("nomeLocalidade", recebeNome)
+            .get()
+            .addOnSuccessListener { result ->
+                for (documents in result){
+                    var note = documents.toObject(CarroselModel::class.java)
+
+                    listaLugares.add(note)
+                }
+            }
+        return listaLugares
+    }
+
+    override fun getListCarrosel(): MutableList<CarroselModel> {
         var listaCarrosel: MutableList<CarroselModel> = arrayListOf()
 
         db.collection("lugares")
@@ -28,22 +44,5 @@ class GestorCarroselModel {
                 }
             }
         return listaCarrosel
-    }
-
-    fun getListaLugaresPorNome(recebeNome: String): MutableList<CarroselModel>{
-
-        var listaLugares: MutableList<CarroselModel> = arrayListOf()
-
-        db.collection("lugares")
-            .whereEqualTo("nomeLocalidade", recebeNome)
-            .get()
-            .addOnSuccessListener { result ->
-                for (documents in result){
-                    var note = documents.toObject(CarroselModel::class.java)
-
-                    listaLugares.add(note)
-                }
-            }
-        return listaLugares
     }
 }

@@ -10,6 +10,7 @@
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="IbiTUR"
+        android:name=".ui.activities.MyApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
